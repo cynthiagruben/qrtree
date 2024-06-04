@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { DataService } from './data.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: [DataService]
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [CommonModule, RouterModule]
 })
 export class AppComponent implements OnInit {
-  title = 'qrtree';
-
-  constructor() {}
+  constructor(private keycloakService: KeycloakService) {}
 
   ngOnInit(): void {}
+
+  logout(): void {
+    this.keycloakService.logout();
+  }
+
+  get userName(): string {
+    return this.keycloakService.getUsername();
+  }
 }

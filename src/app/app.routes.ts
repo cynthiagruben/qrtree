@@ -5,14 +5,15 @@ import { QrcodesComponent } from './qrcodes/qrcodes.component';
 import { QreditComponent } from './qredit/qredit.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { QrviewComponent } from './qrview/qrview.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
-      { path: '', component: MainComponent },
-      { path: 'qr', component: QrcodesComponent },
-      { path: 'qrview', component: QrviewComponent},
-      { path: 'qredit', component: QreditComponent },
+      { path: '', component: MainComponent},
+      { path: 'qr', component: QrcodesComponent, canActivate: [AuthGuard]},
+      { path: 'qrview', component: QrviewComponent, canActivate: [AuthGuard]},
+      { path: 'qredit', component: QreditComponent, canActivate: [AuthGuard]},
       { path: 'imprint', component: ImpressumComponent },
-      { path: '**', component: MainComponent }
+      { path: '**', component: MainComponent },
 ];
 
 @NgModule({
