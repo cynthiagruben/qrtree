@@ -13,6 +13,7 @@
     "qrSettings": {
         "remove": "../../assets/img/trash-2-svgrepo-com.svg",
         "edit": "../../assets/img/setting-5-svgrepo-com.svg",
-        "toggle": "../../assets/img/toogle-right-svgrepo-com.svg"
+        "toggle": "../../assets/img/toogle-right-svgrepo-com.svg",
+        "toggleOff": "../../assets/img/toogle-left-svgrepo-com.svg"
     }
 }

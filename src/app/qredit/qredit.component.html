@@ -13,12 +13,12 @@
 
     <div class="parent">
         <div class="div4">
-            <img src="../../assets/img/Owl_logo.png" class="qrlogo">
+            <img [src]="img" class="qrlogo">
             <input type="image" class="button">
         </div>
         <div class="div5">
-            <input type="color">
-            <input type="color">
+            <input type="color" [value]="primarycolor">
+            <input type="color" [value]="textcolor">
         </div>
         <div class="div6">
             <span class="azu kanit-medium">Allgemeine Zugriffe</span>
@@ -29,12 +29,11 @@
             <span class="l7 kanit-medium">Letzte 7 Tage</span>
         </div>
         <div class="div7">
-            <img src="../../assets/img/QR_deWP.svg.png" class="qrcode">
-            <input type="button" class="button">
+            <img [src]="qrimg" class="qrcode">
         </div>
         <div class="div8">
-            <input type="url" placeholder="https://www.youtube.com/">
-            <input type="url" value="https://qrtree.de/yoururl/" readonly>
+            <input type="url" [value]="link" readonly>
+            <input type="url" [value]="shortlink" readonly>
         </div>
     </div>
 

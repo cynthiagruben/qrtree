@@ -54,17 +54,20 @@ export class QrviewComponent {
       this.qrEditJson = data.qrSettings.edit;
       this.qrToggleJson = data.qrSettings.toggle;
 
-      this.generateQRBox()
+      
     });    
 
     this.route.queryParams.subscribe(params => {
       this.userId = params['user'];
       console.log(this.userId)
       if (this.userId) {
-        this.apiService.getQrEditorData(this.userId).subscribe(
+        this.apiService.getQrViewData(this.userId).subscribe(
           response => {
             this.data = response;
             console.log(this.data);
+
+            this.maxNum = this.data.length;
+            this.generateQRBox(this.data)
           },
           error => {
             console.error('Es gab einen Fehler!', error);
@@ -92,7 +95,7 @@ export class QrviewComponent {
     }
   }
 
-  generateQRBox() {
+  generateQRBox(data: any) {
 
     if (Number(this.maxNum) > 10) {
       this.num = 10;
@@ -118,7 +121,7 @@ export class QrviewComponent {
       });
 
       this.renderer.addClass(qrPopoutImg, 'qrcodepopout');
-      this.renderer.setAttribute(qrPopoutImg, 'src', this.qrCodeJson);
+      this.renderer.setAttribute(qrPopoutImg, 'src', data[i].qrimg);
       this.renderer.listen(qrPopoutImg, 'click', (event) => {
         this.qrview();
       });
@@ -127,20 +130,20 @@ export class QrviewComponent {
       this.renderer.setAttribute(qrTree, 'style', 'top: '+ (15+16.5*i) +'%;')
 
       this.renderer.addClass(qrLogo, 'qrlogo');
-      this.renderer.setAttribute(qrLogo, 'src', this.qrLogoJson);
+      this.renderer.setAttribute(qrLogo, 'src', data[i].img);
 
       this.renderer.addClass(qrText, 'qrtext');
       this.renderer.addClass(qrText, 'kanit-bold');
-      this.renderer.appendChild(qrText, this.renderer.createText(this.qrTextJson));
+      this.renderer.appendChild(qrText, this.renderer.createText(data[i].text));
 
       this.renderer.addClass(qrLink, 'qrlink');
-      this.renderer.setAttribute(qrLink, 'src', this.qrLinkJson);
+      this.renderer.setAttribute(qrLink, 'src', data[i].mainLink);
 
       this.renderer.addClass(qrLinkImg, 'qrlinkicon');
       this.renderer.setAttribute(qrLinkImg, 'src', '../../assets/img/link-svgrepo-com.svg');
 
       this.renderer.addClass(qrCode, 'qrcode');
-      this.renderer.setAttribute(qrCode, 'src', this.qrCodeJson);
+      this.renderer.setAttribute(qrCode, 'src', data[i].qrimg);
       this.renderer.listen(qrCode, 'click', (event) => {
         this.qrview();
       });
