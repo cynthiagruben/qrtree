@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "http://uni.grub-bros.de:8081",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }

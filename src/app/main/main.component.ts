@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 
 @Component({
@@ -8,5 +8,17 @@ import { KeycloakService } from 'keycloak-angular';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+  userId?: string;
+
+  constructor(private keycloakService: KeycloakService) {}
+
+  ngOnInit() {
+    this.keycloakService.loadUserProfile().then(profile => {
+      this.userId = profile.id;
+      console.log(this.userId)
+    });
+
+    
+  }
 }

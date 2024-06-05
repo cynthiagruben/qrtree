@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { DataService } from '../data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-qrcodes',
@@ -26,10 +27,13 @@ export class QrcodesComponent {
   maxNum: any = 2;
   num: any = 0;
 
+  userId: string | null = null;
+
   constructor(
     private dataService: DataService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +52,12 @@ export class QrcodesComponent {
       this.qrToggleJson = data.qrSettings.toggle;
 
       this.generateQRBox()
-    });    
+    });
+
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['User'];
+      console.log(this.userId);
+    });
   }
 
   qrview(targetElement: any, number: any): void{

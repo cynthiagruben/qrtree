@@ -9,9 +9,9 @@ import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
       { path: '', component: MainComponent},
-      { path: 'qr', component: QrcodesComponent, canActivate: [AuthGuard]},
-      { path: 'qrview', component: QrviewComponent, canActivate: [AuthGuard]},
-      { path: 'qredit', component: QreditComponent, canActivate: [AuthGuard]},
+      { path: 'userQrOverview', component: QrcodesComponent, canActivate: [AuthGuard]},
+      { path: 'qrView', component: QrviewComponent},
+      { path: 'userQrEditor', component: QreditComponent, canActivate: [AuthGuard]},
       { path: 'imprint', component: ImpressumComponent },
       { path: '**', component: MainComponent },
 ];

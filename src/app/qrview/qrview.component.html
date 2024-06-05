@@ -1,17 +1,20 @@
-<p>qrview works!</p>
 <div class="all" id="all">
     <div class="navbar">
         <div class="div1">
-            <a href="/" class="kanit-bold fontsize">{{ navHome }}</a>
+            <a href="/" class="kanit-bold fontsize">Home</a>
         </div>
         <div class="div2">
-            <a href="/qr" class="kanit-extrabold fontsize">{{ navQR }}</a>
+            <a href="/qrView" class="kanit-extrabold fontsize">QR-Codes</a>
         </div>
         <div class="div3">
-            <a href="/account" class="kanit-bold fontsize">{{ navAcc }}</a>
+            <a href="/userQrOverview" class="kanit-bold fontsize">QR-Editor</a>
         </div>
     </div>
     <div class="qrbox" id="qrbox">
+    </div>
+    <div class="noUserBox none" id="noUserBox">
+        <span class="noUser kanit-medium" id="noUser">Der Ausgewählt Benutzer exsistiert nicht oder du hast keinen angegeben</span>
+        <a href="/userQrOverview" class="kanit-bold fontsizeSecond" id="noUserLink">Erstelle doch selbst einen QRTree</a>
     </div>
 </div>
 

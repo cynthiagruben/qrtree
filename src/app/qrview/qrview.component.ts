@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { DataService } from '../data.service';
+import { ActivatedRoute } from '@angular/router';
+import { GetQrCodesService } from '../get-qr-codes.service';
 
 @Component({
   selector: 'app-qrview',
@@ -23,13 +25,18 @@ export class QrviewComponent {
   qrEditJson: string = "";
   qrToggleJson: string = "";
 
-  maxNum: any = 2;
+  maxNum: any = 0;
   num: any = 0;
+
+  data: any;
+  userId: string | null = null;
 
   constructor(
     private dataService: DataService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private route: ActivatedRoute,
+    private apiService: GetQrCodesService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +56,29 @@ export class QrviewComponent {
 
       this.generateQRBox()
     });    
+
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['user'];
+      console.log(this.userId)
+      if (this.userId) {
+        this.apiService.getQrEditorData(this.userId).subscribe(
+          response => {
+            this.data = response;
+            console.log(this.data);
+          },
+          error => {
+            console.error('Es gab einen Fehler!', error);
+            if(this.elementRef.nativeElement.parentElement.querySelector('#noUserBox').classList.contains("none")) {
+              this.renderer.removeClass(this.elementRef.nativeElement.parentElement.querySelector('#noUserBox'), "none")
+            }
+          }
+        );
+      } else {
+        if(this.elementRef.nativeElement.parentElement.querySelector('#noUserBox').classList.contains("none")) {
+          this.renderer.removeClass(this.elementRef.nativeElement.parentElement.querySelector('#noUserBox'), "none")
+        }
+      }
+    });
   }
 
   qrview(): void{

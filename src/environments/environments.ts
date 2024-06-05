@@ -1,8 +1,8 @@
 export const environment = {
     production: false,
     keycloak: {
-      url: 'http://uni.grub-bros.de:8080',
+      url: 'https://uni.grub-bros.de:8443',
       realm: 'test',
-      clientId: 'login'
+      clientId: 'login-local'
     }
   };
