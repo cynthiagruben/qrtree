@@ -8,10 +8,15 @@ import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { APP_INITIALIZER } from '@angular/core';
 import { initializeKeycloak } from './keycloak-init';
 import { provideHttpClient } from "@angular/common/http";
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 if (environment.production) {
   enableProdMode();
 }
+
+import { NgModule } from '@angular/core';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -26,3 +31,4 @@ bootstrapApplication(AppComponent, {
     }
   ]
 }).catch(err => console.error(err));
+

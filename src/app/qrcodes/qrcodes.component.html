@@ -12,5 +12,15 @@
     </div>
     <div class="qrbox" id="qrbox">
     </div>
+    <div class="createButton" (click)="create()">
+        <span class="kanit-bold createButtontText" (click)="create()">Erstellen</span>
+    </div>
+    <div class="urlBlur none" id="urlBlur">
+        <div class="urlBox">
+            <input type="url" class="urlInput" (change)="urlInput($event)">
+        </div>
+        <button class="urlButtonCancel kanit-bold createButtontText" (click)="reload()">Abbrechen</button>
+        <button class="urlButtonCreate kanit-bold createButtontText" (click)="createNew()">Erstellen</button>
+    </div>
 </div>
 

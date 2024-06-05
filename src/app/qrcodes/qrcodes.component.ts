@@ -34,6 +34,8 @@ export class QrcodesComponent {
   userId: any;
   userName: any;
 
+  urlInputVar: any;
+
   constructor(
     private dataService: DataService,
     private elementRef: ElementRef,
@@ -75,7 +77,6 @@ export class QrcodesComponent {
               this.maxNum = this.data.length;
               this.generateQRBox(this.data)
             } else {
-              console.log("Test");
               this.apiService.accountCreate(this.userName, this.userId).subscribe(
                 response => {
                   this.data = response;
@@ -94,6 +95,36 @@ export class QrcodesComponent {
       }
     });
     });
+  }
+
+  urlInput(event: any) {
+    this.urlInputVar = event.target.value;
+    console.log(this.urlInputVar)
+  }
+
+  reload(): void{
+    window.location.reload();
+  }
+
+  createNew(): void{
+    this.keycloakService.loadUserProfile().then(profile => {
+      this.userId = profile.id;
+    this.apiService.createQr(this.userId, this.urlInputVar).subscribe(
+      response => {
+        this.data = response;
+        console.log(this.data);
+      },
+      error => {
+        console.error('Es gab einen Fehler!', error);
+      }
+    )
+  })
+  }
+
+  create(): void{
+    if(this.elementRef.nativeElement.parentElement.querySelector('#urlBlur').classList.contains("none")) {
+      this.renderer.removeClass(this.elementRef.nativeElement.parentElement.querySelector('#urlBlur'), "none")
+    }
   }
 
   qrview(targetElement: any, number: any): void{

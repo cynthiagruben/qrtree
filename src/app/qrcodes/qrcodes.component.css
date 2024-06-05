@@ -300,3 +300,98 @@
   .none {
     visibility: hidden;
   }
+
+  .createButton {
+    position: fixed;
+    border: 0;
+    border-radius: 0.75rem;
+    background-color: green;
+    width: 15%;
+    height: 6.5%;
+    left: 89.5%;
+    top: 91%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    font-size: 150%;
+  }
+  .createButton:hover {
+    background-color: red;
+  }
+  .createButtontText {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .urlBlur{
+    position: absolute;
+    z-index: 100;
+    backdrop-filter: blur( 10px );
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+  }
+
+  .urlBox{
+    position: absolute;
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    width: 35%;
+    height: 10%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+  }
+
+  .urlInput {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+    width: 80%;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #1F1B24;
+    color: #ffffffc3;
+    padding: 0.5rem;
+    font-size: 125%;
+  }
+
+  .urlButtonCancel {
+    position: fixed;
+    border: 0;
+    border-radius: 0.75rem;
+    background-color: red;
+    width: 15%;
+    height: 6.5%;
+    left: 40%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    font-size: 150%;
+  }
+  .urlButtonCancel:hover {
+    background-color: green;
+  }
+
+  .urlButtonCreate {
+    position: fixed;
+    border: 0;
+    border-radius: 0.75rem;
+    background-color: green;
+    width: 15%;
+    height: 6.5%;
+    left: 60%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    font-size: 150%;
+  }
+  .urlButtonCreate:hover {
+    background-color: red;
+  }

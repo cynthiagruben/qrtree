@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class GetQrCodesService {
     return this.http.get<any>('https://uni.grub-bros.de:8081/api/qrcodes/' + QrId, this.httpOptions);
   }
 
-  createQr(UserId: string): Observable<any> {
-    const requestBody = { img: "../../assets/img/Owl_logo.png", text: "Hier könnte dein Text stehen", permaLink: "false", url: "https://google.de", primaryColor: "#ffffff", textColor: "#ffffff", deactivated: "false", UserId: UserId, };
+  createQr(UserId: string, url: string): Observable<any> {
+    const requestBody = { img: "../../assets/img/Owl_logo.png", text: "Hier könnte dein Text stehen", permalink: "false", url: url, primaryColor: "#ffffff", textColor: "#ffffff", deactivated: "false", accountId: UserId, };
     return this.http.post<any>('https://uni.grub-bros.de:8081/api/qrcodes/create', requestBody, this.httpOptions);
   }
 
@@ -52,5 +53,10 @@ export class GetQrCodesService {
 
   analyticShotUrl(shortID: string): Observable<any> {
     return this.http.get<any>('https://uni.grub-bros.de:8081/api/analytics/hourly/' + shortID, this.httpOptions);
+  }
+
+  updateQrData(data: any): Observable<any> {
+    const url = "https://uni.grub-bros.de:8081/api/qrcodes/edit"
+    return this.http.post(url, data);
   }
 }
