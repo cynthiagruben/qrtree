@@ -3,6 +3,6 @@ export const environment = {
     keycloak: {
       url: 'https://uni.grub-bros.de:8443',
       realm: 'test',
-      clientId: 'login-local'
+      clientId: 'login'
     }
   };
