@@ -36,6 +36,8 @@ export class QrcodesComponent {
 
   urlInputVar: any;
 
+  url: any;
+
   constructor(
     private dataService: DataService,
     private elementRef: ElementRef,
@@ -64,6 +66,8 @@ export class QrcodesComponent {
 
     this.keycloakService.loadUserProfile().then(profile => {
       console.log(profile.id);
+
+      this.url = "https://uni.grub-bros.de/qrView?user=" + profile.id
     })
 
     this.route.queryParams.subscribe(params => {
@@ -205,7 +209,7 @@ export class QrcodesComponent {
       this.renderer.setAttribute(qrPopoutImg, 'id', 'qrPopoutImg'+i);
 
       this.renderer.addClass(qrTree, 'qrtree');
-      this.renderer.setAttribute(qrTree, 'style', 'top: '+ (15+25*i) +'%;')
+      this.renderer.setAttribute(qrTree, 'style', 'top: '+ (25+25*i) +'%;')
       this.renderer.setAttribute(qrTree, 'id', data[i].id);
 
       this.renderer.addClass(qrLogo, 'qrlogo');

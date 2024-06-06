@@ -395,3 +395,17 @@
   .urlButtonCreate:hover {
     background-color: red;
   }
+
+  .link {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translate(-50%, -50%);
+    height: 4%;
+    width: 45%;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 0.25rem;
+    font-size: 125%;
+  }
