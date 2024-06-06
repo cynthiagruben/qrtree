@@ -22,7 +22,7 @@ export class GetQrCodesService {
   }
 
   getQrViewData(userId: string): Observable<any> {
-    return this.http.get<any>('https://uni.grub-bros.de:8081/api/qrcodes/' + userId + '/qrcodes', this.httpOptions);
+    return this.http.get<any>('https://uni.grub-bros.de:8081/api/account/' + userId + '/qrcodes', this.httpOptions);
   }
 
   getQrSingleData(QrId: string): Observable<any> {
