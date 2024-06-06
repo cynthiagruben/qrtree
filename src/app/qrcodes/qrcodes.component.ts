@@ -72,7 +72,6 @@ export class QrcodesComponent {
         this.apiService.getQrEditorData(this.userId).subscribe(
           response => {
             this.data = response;
-            console.log(this.data);
             if (this.data) {
               this.maxNum = this.data.length;
               this.generateQRBox(this.data)
@@ -80,7 +79,6 @@ export class QrcodesComponent {
               this.apiService.accountCreate(this.userName, this.userId).subscribe(
                 response => {
                   this.data = response;
-                  console.log(this.data);
                 },
                 error => {
                   console.error('Es gab einen Fehler!', error);
@@ -99,7 +97,6 @@ export class QrcodesComponent {
 
   urlInput(event: any) {
     this.urlInputVar = event.target.value;
-    console.log(this.urlInputVar)
   }
 
   reload(): void{
@@ -112,7 +109,6 @@ export class QrcodesComponent {
     this.apiService.createQr(this.userId, this.urlInputVar).subscribe(
       response => {
         this.data = response;
-        console.log(this.data);
       },
       error => {
         console.error('Es gab einen Fehler!', error);
@@ -152,7 +148,6 @@ export class QrcodesComponent {
     this.apiService.removeQR(id).subscribe(
       response => {
         this.data = response;
-        console.log(this.data);
       },
       error => {
         console.error('Es gab einen Fehler!', error);
@@ -262,7 +257,6 @@ export class QrcodesComponent {
           this.apiService.deactivateQR(data[i].id).subscribe(
             response => {
               this.data = response;
-              console.log(this.data);
             },
             error => {
               console.error('Es gab einen Fehler!', error);
@@ -286,7 +280,6 @@ export class QrcodesComponent {
         this.apiService.deactivateQR(data[i].id).subscribe(
           response => {
             this.data = response;
-            console.log(this.data);
           },
           error => {
             console.error('Es gab einen Fehler!', error);

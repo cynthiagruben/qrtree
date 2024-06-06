@@ -16,7 +16,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.keycloakService.loadUserProfile().then(profile => {
       this.userId = profile.id;
-      console.log(this.userId)
     });
 
     

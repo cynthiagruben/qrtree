@@ -52,12 +52,10 @@ export class QreditComponent {
 
   onPrimaryColor(event: any) {
     this.primarycolor = event.target.value;
-    console.log(this.primarycolor)
   }
 
   onTextColor(event: any) {
     this.textcolor = event.target.value;
-    console.log(this.textcolor)
   }
 
   onSubmit() {
@@ -65,7 +63,6 @@ export class QreditComponent {
       this.QRId = params['id'];
       const data = { "id": this.QRId, "text": "aaa", "primaryColor": this.primarycolor, "img": this.img, "isactive": "true", "textColor": this.textcolor }
       this.apiService.updateQrData(data).subscribe(response => {
-        console.log('Response:', response);
       }, error => {
         console.error('Fehler beim Senden der Daten:', error);
       });
@@ -73,13 +70,10 @@ export class QreditComponent {
     
     const formData = new FormData();
 
-    console.log(this.primarycolor + " Halloo")
-
     if (this.selectedFile) {
       formData.append('file', this.selectedFile, this.selectedFile.name);
 
       this.http.post('http://localhost:3000/api/upload', formData).subscribe(response => {
-        console.log('File upload response:', response);
       },
       error => {
         console.error('Es gab einen Fehler!', error);
@@ -88,7 +82,6 @@ export class QreditComponent {
     }
 
     window.location.href = this.router.url;
-    console.log(this.router.url);
   }
 
   qrData() {
@@ -98,7 +91,6 @@ export class QreditComponent {
         this.apiService.getQrSingleData(this.QRId).subscribe(
           response => {
             this.data = response;
-            console.log(this.data);
 
             this.shortlink = "https://uni.grub-bros.de/api/url/" + this.data.shortedlink
             this.link = this.data.mainlink

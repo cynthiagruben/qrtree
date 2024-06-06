@@ -59,12 +59,10 @@ export class QrviewComponent {
 
     this.route.queryParams.subscribe(params => {
       this.userId = params['user'];
-      console.log(this.userId)
       if (this.userId) {
         this.apiService.getQrViewData(this.userId).subscribe(
           response => {
             this.data = response;
-            console.log(this.data);
 
             this.maxNum = this.data.length;
             this.generateQRBox(this.data)
