@@ -100,6 +100,14 @@ export class QreditComponent {
             this.textcolor = this.data.textcolor
             this.img = this.data.img
             this.qrimg = this.data.qrimg
+
+            if(this.data.deactivated == false) {
+              console.log(this.data.deactivated)
+              this.renderer.setAttribute(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'), 'src', '../../assets/img/toogle-right-svgrepo-com.svg')
+            } else {
+              console.log(this.data.deactivated)
+              this.renderer.setAttribute(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'), 'src', '../../assets/img/toogle-left-svgrepo-com.svg')
+            }
           },
           error => {
             console.error('Es gab einen Fehler!', error);

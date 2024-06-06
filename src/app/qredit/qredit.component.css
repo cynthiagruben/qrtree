@@ -396,3 +396,10 @@
     left: 27%;
     font-size: 150%;
   }
+
+  .permalinkTitle {
+    position: absolute;
+    top: 1%;
+    left: 70%;
+    font-size: 150%;
+  }
