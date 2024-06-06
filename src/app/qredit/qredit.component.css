@@ -341,3 +341,58 @@
     background-color: #1F1B24;
     padding: 0.5rem;
   }
+
+  .qrdeactivate {
+    position: absolute;
+    border-radius: 1rem;
+    height: 45%;
+    width: 10%;
+    top: 40%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    border: 0;
+    cursor: pointer;
+  }
+  .qrdeactivatebutton {
+    position: absolute;
+    border-radius: 1rem;
+    height: 150%;
+    width: 150%;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .qrdeactivateimg {
+    position: absolute;
+    border-radius: 1rem;
+    height: 150%;
+    width: 150%;
+  }
+
+  .linkTitle {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    font-size: 150%;
+  }
+
+  .shortlinkTitle {
+    position: absolute;
+    top: 55%;
+    left: 5%;
+    font-size: 150%;
+  }
+
+  .primarycolorTitle {
+    position: absolute;
+    top: 1%;
+    left: 7%;
+    font-size: 150%;
+  }
+
+  .textcolorTitle {
+    position: absolute;
+    top: 1%;
+    left: 27%;
+    font-size: 150%;
+  }

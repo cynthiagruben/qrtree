@@ -17,8 +17,14 @@
                 <input type="file" (change)="onFileSelected($event)" accept="image/*" class="uploadImg"/>
             </div>
             <div class="div5">
+                <span class="primarycolorTitle kanit-medium">Hauptfarbe</span>
+                <span class="textcolorTitle kanit-medium">Textfarbe</span>
                 <input class="primarycolor" (change)="onPrimaryColor($event)" type="color" [value]="primarycolor">
                 <input class="textcolor" (change)="onTextColor($event)" type="color" [value]="textcolor">
+                <div class="qrdeactivate">
+                    <input type="button" class="qrdeactivatebutton">
+                    <img src="../../assets/img/toogle-right-svgrepo-com.svg" class="qrdeactivateimg activ" (click)="toggleQRLink()" id="qrDeactivatedImg">
+                </div>
             </div>
             <div class="div6">
                 <span class="azu kanit-medium">Allgemeine Zugriffe</span>
@@ -28,6 +34,8 @@
                 <img [src]="qrimg" class="qrcode">
             </div>
             <div class="div8">
+                <span class="linkTitle kanit-medium">Link</span>
+                <span class="shortlinkTitle kanit-medium">Shortedlink</span>
                 <input class="link kanit-medium" type="url" [value]="link" readonly>
                 <input class="shortlink kanit-medium" type="url" [value]="shortlink" readonly>
             </div>

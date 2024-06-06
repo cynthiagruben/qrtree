@@ -83,6 +83,10 @@ export class QrcodesComponent {
             if (this.data) {
               this.maxNum = this.data.length;
               this.generateQRBox(this.data)
+              console.log(this.data.length)
+              if (this.data.length >= 3) {
+                this.renderer.addClass(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#createButton'), 'none')
+              }
             } else {
               this.apiService.accountCreate(this.userName, this.userId).subscribe(
                 response => {
@@ -101,6 +105,8 @@ export class QrcodesComponent {
       }
     });
     });
+
+
   }
 
   urlInput(event: any) {
@@ -170,8 +176,8 @@ export class QrcodesComponent {
   };
 
   generateQRBox(data: any) {
-    if (Number(this.maxNum) > 10) {
-      this.num = 10;
+    if (Number(this.maxNum) > 3) {
+      this.num = 3;
     } else {
       this.num = Number(this.maxNum);
     }

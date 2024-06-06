@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { GetQrCodesService } from '../get-qr-codes.service';
 import { KeycloakService } from 'keycloak-angular';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -39,7 +39,9 @@ export class QreditComponent {
     private route: ActivatedRoute,
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
   ) { }
 
   ngOnInit(): void {
@@ -92,7 +94,7 @@ export class QreditComponent {
           response => {
             this.data = response;
 
-            this.shortlink = "https://uni.grub-bros.de/api/url/" + this.data.shortedlink
+            this.shortlink = "https://uni.grub-bros.de:8081/api/url/" + this.data.shortedlink
             this.link = this.data.mainlink
             this.primarycolor = this.data.primarycolor
             this.textcolor = this.data.textcolor
@@ -107,5 +109,15 @@ export class QreditComponent {
     });
   }
 
+  toggleQRLink(): void{
+    console.log(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'))
+    if(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg').classList.contains("activ")) {
+      this.renderer.setAttribute(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'), 'src', '../../assets/img/toogle-left-svgrepo-com.svg')
+      this.renderer.removeClass(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'), 'activ')
+    } else {
+      this.renderer.setAttribute(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'), 'src', '../../assets/img/toogle-right-svgrepo-com.svg')
+      this.renderer.addClass(this.elementRef.nativeElement.parentElement.parentElement.querySelector('#qrDeactivatedImg'), 'activ')
+    }
+  }
   
 }
