@@ -62,6 +62,10 @@ export class QrcodesComponent {
       this.qrToggleOffJson = data.qrSettings.toggleOff;
     });
 
+    this.keycloakService.loadUserProfile().then(profile => {
+      console.log(profile.id);
+    })
+
     this.route.queryParams.subscribe(params => {
 
       this.keycloakService.loadUserProfile().then(profile => {
@@ -115,6 +119,9 @@ export class QrcodesComponent {
       }
     )
   })
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
   }
 
   create(): void{
@@ -151,8 +158,12 @@ export class QrcodesComponent {
       },
       error => {
         console.error('Es gab einen Fehler!', error);
-      }
-  )};
+      } 
+  )
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
+  };
 
   generateQRBox(data: any) {
     if (Number(this.maxNum) > 10) {
